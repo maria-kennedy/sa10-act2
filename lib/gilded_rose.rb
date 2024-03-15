@@ -8,6 +8,11 @@ class GildedRose
   end
 
   def tick
+    # make 1st 'seam'
+    if name == "normal"
+      return
+    end
+
     if @name != "Aged Brie" and @name != "Backstage passes to a TAFKAL80ETC concert"
       if @quality > 0
         if @name != "Sulfuras, Hand of Ragnaros"
@@ -52,4 +57,11 @@ class GildedRose
       end
     end
   end
+  
+  # added new method
+  def normal_tick
+    @quality -= 1
+    @days_remaining -= 1
+  end
+
 end
