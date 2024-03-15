@@ -1,37 +1,25 @@
 class GildedRose
 
   def tick
+
     case @name
     when "Normal Item"
-      normal_tick
+      @item = Normal.new(quality, days_remaining)
+      item.tick
+
     when "Aged Brie"
-      brie_tick
+      @item = Brie.new(quality, days_remaining)
+      item.tick
+
     when "Sulfuras, Hand of Ragnaros"
-      sulfuras_tick
+      @item = Sulfuras.new(quality, days_remaining)
+      item.tick
     when "Backstage passes to a TAFKAL80ETC concert"
-      backstage_tick
+      @item = Backstage.new(quality, days_remaining)
+      item.tick
     end
   end
 
-
-  def normal_tick
-    @item = Normal.new(quality, days_remaining)
-    item.tick
-  end
-
-  def brie_tick
-    @item = Brie.new(quality, days_remaining)
-  end
-  
-  def sulfuras_tick
-    @item = Sulfuras.new(quality, days_remaining)
-    item.tick
-  end
-
-  def backstage_tick
-    @item = Backstage.new(quality, days_remaining)
-    item.tick
-  end
   # add a new class for Normal within GildedRose
   class Normal
     attr_reader :quality, :days_remaining
