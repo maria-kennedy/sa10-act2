@@ -7,10 +7,22 @@ class GildedRose
     @quality = quality
   end
 
+
+
   def tick
-    # make 1st 'seam'
-    if name == "normal"
-      return
+    # # make 1st 'seam'
+    # if name == "normal"
+    #   return
+    # end
+
+    # adding case for tracking
+    case name
+    when "Normal Item"
+      return normal_tick
+    when "Aged Brie"
+      return brie_tick
+    when "Sulfuras, Hand of Ragnaros"
+      return sulfuras_tick
     end
 
     if @name != "Aged Brie" and @name != "Backstage passes to a TAFKAL80ETC concert"
@@ -65,6 +77,19 @@ class GildedRose
 
     @quality -= 1
     @quality -= 1 if @days_remaining <= 0
+  end
+
+  # refactored brie_tick
+  def brie_tick
+    @days_remaining -= 1
+    return if @quality >= 50
+
+    @quality += 1
+    @quality += 1 if @days_remaining <= 0 && @quality < 50
+  end
+
+  def sulfuras_tick
+    # do nothing
   end
 
 end
